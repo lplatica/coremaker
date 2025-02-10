@@ -3,7 +3,6 @@ package com.example.user.controller;
 import com.example.user.common.JwtUtil;
 import com.example.user.domain.User;
 import com.example.user.service.UserService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -46,7 +45,7 @@ public class UserController {
             UserDetails userDetails = (UserDetails) authentication.getPrincipal();
             return JwtUtil.generateToken(userDetails.getUsername());
         } catch (Exception e) {
-            return ResponseEntity.badRequest().toString();
+            return "Invalid user";
         }
     }
 
